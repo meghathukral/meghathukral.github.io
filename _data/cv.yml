@@ -34,7 +34,18 @@
     - title: Graduate Research Assistant
       institution: Georgia Institute of Technology
       year: 2023- Present
+      description:
+        - Contributing to the NSF AI Caring project, I am developing foundational AI techniques for longitudinal behavioral
+          tracking and routine change detection in the elderly population.
+
     - title: Software Engineer Intern (ML)
       institution: Bloomberg, AI Group , NY
       year: May-Jul 2022
+      description:
+        - Built and deployed an FAQ Retrieval Model to handle repeated queries for ML Platform’s chatbot. Used pretrained
+          Sentence BERT model to implement Question-Query similarity algorithm.
+        - Automated the train-deploy-infer ML workflow using Argo Workflows which assisted other teams to build and
+          onboard their bots with minimal effort.
+        - Tools -- PyTorch, scikit-learn, KServe, Argo, Kubernetes, KServe, CI/CD Jenkins, Python unit testing
+
 
