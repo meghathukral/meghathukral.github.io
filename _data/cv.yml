@@ -3,6 +3,10 @@
   contents:
     - name: Full Name
       value: Megha Thukral
+    - name: Email
+      value: mthukral3@gatech.edu
+    - name: skills
+      value: Pytorch, Machine Learning, Deep Learning, Python
     - name: Languages
       value: English, Hindi
 
