@@ -16,10 +16,16 @@
     - title: PhD (ML)
       institution: School of Interactive Computing, Georgia Institute of Technology
       year: 2023-Present
+      description:
+        - Mathematical Foundations of Machine Learning
+        - GPA 4/4
     - title: MS CS
       institution: School of Interactive Computing, Georgia Institute of Technology
       year: 2021-2023
       description:
+        - Deep Learning, Machine Learning, Ubiquitous Computing, Graduate Algorithms, Computer Vision
+        - GPA 4/4
+
 
 
 - title: Experience

@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Critical Mass paper[https://dl.acm.org/doi/10.1145/3594738.3611366] accepted at ISWC 2023[https://www.ubicomp.org/ubicomp-iswc-2023/] held at Cancun, Mexico.
+[How much unlabeled data is needed for self-suppervised HAR? paper](https://dl.acm.org/doi/10.1145/3594738.3611366) accepted at [ISWC 2023](https://www.ubicomp.org/ubicomp-iswc-2023/) held at Cancun, Mexico.
