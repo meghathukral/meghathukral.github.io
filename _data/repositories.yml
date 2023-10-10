@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - meghathukral
+  - gmt20
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - meghathukral/CrossDomain-HAR
+  - gmt20/Visual-Reasoning-for-the-Visually-Impaired
+  - gmt20/Plankton_Domain_Adaptation
+
