@@ -20,4 +20,4 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 Hey! I am a P.hD. candidate at School of Interactive Computing, Georgia Institute of Technology.
-My research is focused on developing innovative methods for sensor-based Human Activity Recognition. I am grateful to be advised by <a href='https://www.cc.gatech.edu/people/thomas-ploetz'>  Prof. Thomas Ploetz. Some random thing </a>
+My research is focused on developing innovative methods for sensor-based Human Activity Recognition. I am grateful to be advised by <a href='https://www.cc.gatech.edu/people/thomas-ploetz'>  Prof. Thomas Ploetz </a>
