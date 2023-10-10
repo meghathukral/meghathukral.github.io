@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Paper accepted at ISWC 2023[https://www.ubicomp.org/ubicomp-iswc-2023/] held at Cancun, Mexico.
+Critical Mass paper[https://dl.acm.org/doi/10.1145/3594738.3611366] accepted at ISWC 2023[https://www.ubicomp.org/ubicomp-iswc-2023/] held at Cancun, Mexico.
