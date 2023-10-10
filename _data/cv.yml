@@ -17,13 +17,13 @@
       institution: School of Interactive Computing, Georgia Institute of Technology
       year: 2023-Present
       description:
-        - Mathematical Foundations of Machine Learning
+        - CourseWork-- Mathematical Foundations of Machine Learning
         - GPA 4/4
     - title: MS CS
       institution: School of Interactive Computing, Georgia Institute of Technology
       year: 2021-2023
       description:
-        - Deep Learning, Machine Learning, Ubiquitous Computing, Graduate Algorithms, Computer Vision
+        - CourseWork-- Deep Learning, Machine Learning, Ubiquitous Computing, Graduate Algorithms, Computer Vision
         - GPA 4/4
 
 
@@ -46,6 +46,6 @@
           Sentence BERT model to implement Question-Query similarity algorithm.
         - Automated the train-deploy-infer ML workflow using Argo Workflows which assisted other teams to build and
           onboard their bots with minimal effort.
-        - Tools -- PyTorch, scikit-learn, KServe, Argo, Kubernetes, KServe, CI/CD Jenkins, Python unit testing
+        - Tools-- PyTorch, scikit-learn, KServe, Argo, Kubernetes, KServe, CI/CD Jenkins, Python unit testing
 
 
