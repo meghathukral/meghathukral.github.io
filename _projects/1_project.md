@@ -1,81 +1,55 @@
----
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: Layout-Agnostic Human Activity Recognition
+description: Exploring the TDOST approach in Smart Homes
+img: assets/img/tdost_overview.png
 importance: 1
-category: work
-related_publications: einstein1956investigations, einstein1950meaning
----
+category: research
+related_publications: thukral2024layoutagnostic, dhekane2024layoutagnostic
+In this project, we present a novel approach to Human Activity Recognition (HAR) in smart homes, focusing on a layout-agnostic method using Textual Descriptions of Sensor Triggers (TDOST). This methodology allows for the transfer of HAR models across different homes without retraining, by leveraging natural language processing.
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+Key Contributions
+TDOST Methodology: We convert raw sensor data into textual descriptions that are independent of the specific layout and sensor configuration of individual homes.
+Cross-Home Generalization: The model trained with TDOST can be applied to different homes without adaptation, ensuring high accuracy and efficiency.
+Use of Pre-trained Language Models: The system utilizes the rich representational capacity of pre-trained language models to handle textual embeddings of sensor data.
+Visual Overview of the Approach
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/tdost_overview.png" title="TDOST Overview" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/architecture.png" title="System Architecture" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/results_comparison.png" title="Results Comparison" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Left: Overview of the TDOST approach. Middle: System architecture for layout-agnostic HAR. Right: Performance comparison across various models and configurations.
+</div>
+System Architecture
+Our approach follows a structured architecture that begins with converting sensor triggers into natural language descriptions. These are then processed using pre-trained language models, which map them into a textual embedding space. The final classification is performed using a deep neural network that can generalize across different home layouts.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/LayoutAgnosticMethod.jpg" title="Training and Inference Pipeline" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    The training and inference pipeline used in the TDOST-based HAR system.
 </div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
-
+Experimental Results
+Our experimental setup tested the effectiveness of TDOST-based HAR models across multiple smart home datasets. The results demonstrate that our approach significantly outperforms traditional methods, especially in transfer scenarios where the model is applied to a new environment without any retraining.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/tdost_results.png" title="Experimental Results" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/dataset.png" title="Dataset Overview" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    Left: Performance metrics across different datasets. Right: Overview of datasets used in the experiments.
 </div>
-
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
+Conclusion
+This project demonstrates the potential of TDOST to create robust, layout-agnostic HAR systems that can be easily deployed across different smart home environments. By leveraging the power of natural language processing, we can overcome the limitations of traditional HAR models and pave the way for more generalizable solutions.
