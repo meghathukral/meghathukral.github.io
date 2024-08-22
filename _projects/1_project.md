@@ -1,7 +1,7 @@
 layout: page
 title: Layout-Agnostic Human Activity Recognition
 description: Exploring the TDOST approach in Smart Homes
-img: assets/img/tdost_overview.png
+img: assets/img/1.png
 importance: 1
 category: research
 related_publications: thukral2024layoutagnostic, dhekane2024layoutagnostic
