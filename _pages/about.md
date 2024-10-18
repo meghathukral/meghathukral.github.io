@@ -19,7 +19,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hey! I am a ML PhD candidate at School of Interactive Computing, Georgia Institute of Technology.
-My current research is focused on developing generalizable machine learning models for sensor-based Human Activity Recognition.  I work with different sensor modalities including but not limited to wearables , smart home ambient sensors and a combination of both. 
+Hey! I am a 2nd-year ML PhD student at School of Interactive Computing, Georgia Institute of Technology.
+My current research is focused on developing generalizable machine learning models for sensor-based Human Activity Recognition.  I work with different sensor modalities including but not limited to wearables , smart home ambient sensors, and a combination of both. 
 I am currently funded by <a href='https://www.ai-caring.org'>  NSF AI Caring project </a>, focussing on HAR models tragetted for elderly care.
-I am grateful to be advised by <a href='https://www.cc.gatech.edu/people/thomas-ploetz'>  Prof. Thomas Ploetz </a>
+I am grateful to be advised by <a href='https://www.cc.gatech.edu/people/thomas-ploetz'>  Prof. Thomas Ploetz. </a>
