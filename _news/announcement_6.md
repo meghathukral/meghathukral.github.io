@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Layout Agnostic HAR using TDOST paper accepted at [ACM Interactive, Mobile, Wearable and Ubiquitous Technologies](https://dl.acm.org/journal/imwut)
+Layout Agnostic HAR using TDOST paper accepted at [ACM Interactive, Mobile, Wearable and Ubiquitous Technologies](https://arxiv.org/pdf/2405.12368)
