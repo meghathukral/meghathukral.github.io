@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🎉📄 Our paper Cross-Domain HAR: Few shot transfer learning for HAR paper accepted at [ACM Transactions on Intelligent Systems and Technology](https://dl.acm.org/doi/10.1145/3704921)
+🎉📄 Our paper [Cross-Domain HAR: Few-Shot Transfer Learning for Human Activity Recognition](https://dl.acm.org/doi/10.1145/3704921) has been accepted to ACM Transactions on Intelligent Systems and Technology
