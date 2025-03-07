@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Layout Agnostic HAR using TDOST paper accepted at [ACM Interactive, Mobile, Wearable and Ubiquitous Technologies](https://arxiv.org/pdf/2405.12368)
+🎉📄 Our paper [Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions Of Sensor Triggers (TDOST)](https://dl.acm.org/doi/pdf/10.1145/3712278) has been accepted to ACM IMWUT. Looking forward to presenting it at Ubicomp 2025, Finland!
