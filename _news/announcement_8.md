@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🎉⌚ Excited to share that I am interning with Samsung Research America in [Digital Health Lab](https://sra.samsung.com/research-area/digital-health/) building ML/AI models for large-scale wearable datasets with Biomarkers team !!
+🎉⌚ Excited to share that I am interning with <span style="color:blue"> Samsung Research America </span> in [Digital Health Lab](https://sra.samsung.com/research-area/digital-health/) building ML/AI models for large-scale wearable datasets with Biomarkers team !!
