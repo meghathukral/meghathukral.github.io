@@ -6,4 +6,4 @@ related_posts: false
 ---
 
 🔍 I’m looking for research internships for Spring/Summer 2026.  
-If you are looking for a good fit in multimodal learning, wearable sensing, or digital health, I’d love to connect.
+If you are looking for a good fit in  wearable sensing, digital health, or multimodal learning, I’d love to connect.
