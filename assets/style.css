@@ -84,11 +84,11 @@ nav.top .links a:hover { color: var(--accent); }
 @media (max-width: 720px) { .hero-grid { grid-template-columns: 1fr; gap: 28px; } .hero-grid .photo { order: -1; } }
 .hero .photo {
   width: 100%; max-width: 340px; aspect-ratio: 3 / 4;
-  border-radius: 8px; overflow: hidden;
+  border-radius: 0; overflow: hidden;
   box-shadow: var(--shadow);
   background: var(--surface-2);
 }
-.hero .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
 .hero .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
 .hero h1 { margin-bottom: 16px; }
 .hero .lede { font-size: 1.05rem; max-width: 60ch; }
