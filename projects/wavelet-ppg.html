@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wavelet-Driven MMR for PPG Foundation Models · Megha Thukral</title>
+  <meta name="description" content="Wavelet-Driven Masked Multiscale Reconstruction for PPG Foundation Models. arXiv:2601.12215." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">arXiv 2026 · under review</div>
+    <h1>Wavelet-Driven Masked Multiscale Reconstruction for PPG Foundation Models</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>, Cyrus Tanade, Simon A. Lee, Juhyeon Lee, Hao Zhou, Keum San Chun, Migyeong Gwak, Viswam Nathan, Md Mahbubur Rahman, Li Zhu, Mehrab Bin Morshed, Subramaniam Venkatraman, Sharanya Arcot Desai</div>
+    <div class="venue-line">arXiv:2601.12215 · Digital Health Team, Samsung Research America</div>
+    <div class="actions">
+      <a class="btn" href="https://arxiv.org/pdf/2601.12215">Paper (arXiv)</a>
+      <a class="btn" href="https://openreview.net/pdf?id=kJbY2CsTPb">Workshop version</a>
+      <span class="btn ghost">Code (coming soon)</span>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Wearable foundation models have the potential to transform digital health by learning transferable representations from large-scale biosignals collected in everyday settings. While recent progress has been made in large-scale pretraining, most approaches overlook the spectral structure of PPG signals, wherein physiological rhythms unfold across multiple frequency bands. Many downstream health-related tasks depend on multi-resolution features spanning fine-grained waveform morphology to global rhythmic dynamics.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavelet_fig.jpg" alt="Masked Multiscale Reconstruction for PPG"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Figure 1: Masked Multiscale Reconstruction (MMR) for Photoplethysmography (PPG) signals. Raw PPG segments are decomposed via Discrete Wavelet Transform, patched, and 75% of patches are masked. A ViT encoder–decoder reconstructs the missing wavelet coefficients across scales.</figcaption>
+    </figure>
+
+    <h2>Method</h2>
+    <p>
+      We introduce <strong>Masked Multiscale Reconstruction (MMR)</strong> for PPG representation learning, a self-supervised pretraining framework that explicitly learns from hierarchical time–frequency scales of PPG data. Raw PPG signals are decomposed into multiple wavelet bands using the Discrete Wavelet Transform (DWT), and the model is trained to reconstruct randomly masked-out coefficients across scales, forcing the transformer encoder to integrate information across temporal and spectral scales.
+    </p>
+    <p>
+      Concretely, we apply a <strong>level-3 Haar DWT</strong> to each 10-second PPG segment, interpolate the resulting subbands to the original signal length, and stack them into a 2-D coefficient map of shape <em>[n<sub>subbands</sub>, T]</em>. The map is divided into non-overlapping patches of size (1, 25) along the temporal axis. During pretraining, <strong>75% of patches are randomly masked</strong>, and a ViT encoder–decoder (following the MAE framework) reconstructs the missing coefficients from the visible context, minimizing MSE over the masked patches. The MMR objective exploits the hierarchical structure of the DWT: coarse approximation bands encode global trends while detail bands refine these trends at progressively higher frequencies, encouraging both top-down (coarse→fine) and bottom-up (fine→coarse) feature sharing.
+    </p>
+
+    <h2>Pretraining data</h2>
+    <p>
+      We pretrain on ~17 million unlabeled 10-second PPG segments collected from ~32,000 Samsung smartwatch users in naturalistic field settings, totalling ~48K hours of data. The majority of segments are sampled at 25–100 Hz, reflecting the low-power, battery-constrained acquisition typical of free-living wearables. Each segment is bandpass-filtered, z-score normalized, and SQI-filtered (entropy + autocorrelation) to discard the most corrupted windows while retaining the variability of real-world conditions.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavelet_results.jpg" alt="MMR downstream evaluation results"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Downstream evaluation across diverse health-related tasks. MMR matches or surpasses state-of-the-art open-source PPG foundation models (PaPaGei-S/-P), time-series foundation models, and self-supervised baselines (SimCLR, LSM).</figcaption>
+    </figure>
+
+    <h2>Results</h2>
+    <p>
+      On <strong>17 of 19 diverse health-related tasks</strong>, MMR improves over or matches state-of-the-art open-source PPG foundation models (PaPaGei-S/-P), time-series foundation models, and other self-supervised baselines (SimCLR, LSM). Tasks span classification (hypertension detection in lab and free-living settings, PVC detection, abnormal lab measures including HDL, LDL, platelets, potassium, sodium, triglycerides) and regression (systolic and diastolic blood pressure in both settings). Notably, MMR outperforms SimCLR and LSM, trained on the same wearable corpus, by up to +18 AUROC points on individual tasks. Despite training on noisy, low-sampling-rate field data, MMR also matches or surpasses PaPaGei models trained on clean, high-frequency (125–500 Hz) clinical signals.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavelet_results2.jpg" alt="MMR ablation studies"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Ablation across wavelet family, decomposition level, and patch size. Different downstream tasks benefit from distinct temporal and frequency scales, supporting the hypothesis that multi-scale PPG information provides complementary cues.</figcaption>
+    </figure>
+
+    <h2>Ablations</h2>
+    <p>
+      Systematic ablations vary wavelet family (Haar, Daubechies-4, biorthogonal-3.5), decomposition level (3–7), and patch size (25–100). The Haar wavelet achieves the strongest PVC performance owing to its compact, sharp-discontinuity structure that emphasizes abrupt waveform changes, while smoother families (db4, bior3.5) trade detail sensitivity for smoother base functions. Deeper decompositions help classification tasks like hypertension by exposing more multi-resolution subbands; smaller patches (25) preserve fine morphological structure that larger patches (100) average out.
+    </p>
+
+    <h2>Done at</h2>
+    <p>This work was carried out during my internship at <a href="https://sra.samsung.com/research-area/digital-health/">Samsung Research America's Digital Health Lab</a> (Biomarkers team). The umbrella effort received the <strong>SRA President Award 2025</strong>. A shorter version was accepted at the NeurIPS 2025 Workshop on Learning from Time Series for Health, and the extended paper is currently under review.</p>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@article{thukral2026wavelet,
+  title   = {Wavelet-Driven Masked Multiscale Reconstruction for PPG Foundation Models},
+  author  = {Thukral, Megha and Tanade, Cyrus and Lee, Simon A. and Lee, Juhyeon and Zhou, Hao and Chun, Keum San and Gwak, Migyeong and Nathan, Viswam and Rahman, Md Mahbubur and Zhu, Li and Morshed, Mehrab Bin and Venkatraman, Subramaniam and Desai, Sharanya Arcot},
+  journal = {arXiv preprint arXiv:2601.12215},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

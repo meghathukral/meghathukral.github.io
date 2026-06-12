@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On-Device Foundation Models · Megha Thukral</title>
+  <meta name="description" content="Towards on-device foundation models for raw wearable signals. NeurIPS 2025 Workshop on Learning from Time Series for Health." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">NeurIPS 2025 Workshop · Time Series for Health</div>
+    <h1>Towards On-Device Foundation Models for Raw Wearable Signals</h1>
+    <div class="authors">Sang-Ah Lee, Cyrus Tanade, Hao Zhou, Juhyeon Lee, <span class="me">Megha Thukral</span>, Baiying Lu, Sharanya Arcot Desai</div>
+    <div class="venue-line">NeurIPS 2025 Workshop on Learning from Time Series for Health</div>
+    <div class="actions">
+      <a class="btn" href="https://openreview.net/forum?id=i6DUa3k63o">Paper (OpenReview)</a>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Foundation models for raw wearable signals are typically large transformer architectures that are difficult or impossible to run directly on the smartwatch or phone where the data is collected. Sending raw signals to the cloud is expensive, undesirable for privacy, and incompatible with truly real-time use cases. Pretraining and inference both need to fit on the edge.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/ondevice_fig.jpg" alt="On-device foundation model architecture"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Edge-efficient pretraining for raw wearable signals. Drop a figure at <code>assets/ondevice_fig.jpg</code> to populate this slot.</figcaption>
+    </figure>
+
+    <h2>Idea</h2>
+    <p>
+      We design and pretrain edge-efficient foundation models for raw wearable signals that preserve representation quality while fitting within the compute, memory, and energy budgets of consumer wearable hardware. The work covers both architectural choices that keep parameter counts low and self-supervised pretraining objectives that scale to billions of unlabeled signal segments without requiring server-class infrastructure.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      Health-grade wearable signal modeling on-device unlocks downstream applications in real-time biomarker estimation and proactive health intervention without sending raw data off the device. Bringing pretraining itself toward the edge is the first step toward foundation models that can be specialized to populations and individuals after deployment.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/ondevice_results.jpg" alt="On-device foundation model results figure"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Edge-efficiency and downstream performance results from the NeurIPS 2025 TS4H workshop paper.</figcaption>
+    </figure>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@inproceedings{lee2025ondevice,
+  title    = {Towards On-Device Foundation Models for Raw Wearable Signals},
+  author   = {Lee, Sang-Ah and Tanade, Cyrus and Zhou, Hao and Lee, Juhyeon and Thukral, Megha and Lu, Baiying and Desai, Sharanya Arcot},
+  booktitle= {NeurIPS 2025 Workshop on Learning from Time Series for Health},
+  year     = {2025}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

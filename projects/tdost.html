@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TDOST · Megha Thukral</title>
+  <meta name="description" content="Layout-Agnostic HAR in Smart Homes through Textual Descriptions of Sensor Triggers (TDOST). IMWUT 2025." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">IMWUT 2025 · UbiComp</div>
+    <h1>TDOST: Layout-Agnostic Smart-Home Activity Recognition</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>, Sourish Gunesh Dhekane, Shruthi K. Hiremath, Harish Haresamudram, Thomas Plötz</div>
+    <div class="venue-line">Proc. ACM IMWUT (Interactive, Mobile, Wearable & Ubiquitous Technologies), 2025</div>
+    <div class="actions">
+      <a class="btn" href="https://dl.acm.org/doi/pdf/10.1145/3712278">Paper (PDF)</a>
+      <a class="btn ghost" href="https://arxiv.org/pdf/2405.12368">arXiv</a>
+      <a class="btn ghost" href="https://drive.google.com/file/d/1NQJg65ETQYeRgl6SGeIL9EU4VUaN1lng/view">Aware-Home demo video</a>
+      <span class="btn ghost">Code (coming soon)</span>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Smart-home HAR models break the moment a sensor is moved or a new home has a different layout. The signal is the <em>arrangement</em> of sensors, and that arrangement never repeats.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/tdost_method.jpg" alt="TDOST method overview" />
+      <figcaption>TDOST converts each raw sensor event into a textual description of the trigger and then encodes that description with a language model, so that downstream models learn over the <em>meanings</em> of the triggers rather than over opaque sensor IDs.</figcaption>
+    </figure>
+
+    <h2>Idea</h2>
+    <p>
+      Instead of learning over opaque sensor IDs, we re-describe each sensor trigger as a short natural-language phrase, for example "the kitchen motion sensor turned on" or "the bedroom door opened". We then embed those phrases with a pretrained language model. The activity classifier subsequently operates over text-grounded representations that are invariant to the specific layout of any one home, since the same activity in a different home produces semantically similar descriptions even when the underlying sensor identifiers are completely different.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      Layout invariance is one of the missing rungs in deploying smart-home human activity recognition at scale, because every new home effectively introduces a new domain in which sensor placements, sensor types, and sensor identifiers all change. TDOST allows models trained in one house to transfer to others without retraining, and we demonstrated that the approach works on a real deployment in the Georgia Tech Aware Home as part of the NSF AI CARING demo.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/tdost_results.png" alt="TDOST results" />
+      <figcaption>Cross-home generalization gains over sensor-ID baselines.</figcaption>
+    </figure>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@article{thukral2025tdost,
+  title  = {Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions of Sensor Triggers (TDOST)},
+  author = {Thukral, Megha and Dhekane, Sourish Gunesh and Hiremath, Shruthi K. and Haresamudram, Harish and Pl{\"o}tz, Thomas},
+  journal= {Proc. ACM IMWUT},
+  year   = {2025}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

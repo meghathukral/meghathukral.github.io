@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgentSense · Megha Thukral</title>
+  <meta name="description" content="AgentSense: virtual sensor data generation using LLM agents in simulated home environments. AAAI 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">AAAI 2026</div>
+    <h1>AgentSense: LLM Agents as Virtual Sensors</h1>
+    <div class="authors">Z. Leng*, <span class="me">M. Thukral*</span>, Y. Liu*, H. Rajasekhar, S. K. Hiremath, J. He, T. Plötz</div>
+    <div class="venue-line" style="font-size:0.9em;opacity:0.75;">* equal contribution</div>
+    <div class="venue-line">Proceedings of the AAAI Conference on Artificial Intelligence, 2026</div>
+    <div class="actions">
+      <a class="btn" href="https://arxiv.org/pdf/2506.11773">Paper (arXiv)</a>
+      <a class="btn" href="https://github.com/ZikangLeng/AgentSense">Code</a>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> A major challenge in developing robust and generalizable Human Activity Recognition (HAR) systems for smart homes is the lack of large and diverse labeled datasets. Variations in home layouts, sensor configurations, and individual behaviors further exacerbate this issue.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/agentsense_overview.png" alt="AgentSense pipeline overview"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Overview of the framework. The LLM first generates diverse synthetic personas. For each persona, it then produces daily routines grounded in the context of a simulated environment. These routines are decomposed into fine-grained actions, which are executed in the X-VirtualHome simulator. The simulator, augmented with ambient sensors, captures virtual sensor data as the agent enacts its daily life.</figcaption>
+    </figure>
+
+    <h2>Method</h2>
+    <p>
+      We introduce <strong>AgentSense</strong>, a virtual data generation pipeline in which agents live out daily routines in simulated smart homes, with behavior guided by Large Language Models (LLMs). The LLM generates diverse synthetic personas and realistic routines grounded in the environment, which are then decomposed into fine-grained actions. These actions are executed in an extended version of the VirtualHome simulator, <strong>X-VirtualHome</strong>, which we augment with virtual ambient sensors (motion, appliance door, and device activation) that record the agents' activities.
+    </p>
+    <p>
+      Routine generation uses a three-stage prompting pipeline: (1) persona generation capturing age, occupation, health, and lifestyle; (2) persona-specific high-level daily schedules conditioned on the day of the week, the rooms available in the chosen VirtualHome layout, and few-shot examples adapted from the Homer dataset; and (3) decomposition of each high-level activity into a sequence of simulator-executable actions, constrained to a predefined vocabulary of 18 allowed actions and grounded to objects in the target room. A FAISS + OpenAI-embedding nearest-neighbour step aligns LLM tokens to the simulator's ontology to eliminate hallucinations.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      Our approach produces rich, privacy-preserving sensor data that reflects real-world diversity. By systematically varying personas, daily routines, home layouts, and sensor configurations, AgentSense generates datasets designed to help HAR models generalize across a wide range of real-world scenarios, without intrusive real-world data collection.
+    </p>
+
+    <h2>Results</h2>
+    <p>
+      We simulate 18 distinct personas across 22 unique home layouts, generating a total of 250 days of virtual sensor data. We evaluate on five real-world smart home datasets: Aruba, Milan, Kyoto7, and Cairo from the CASAS collection, and Orange4Home. Models pretrained on the generated data consistently outperform baselines, especially in low-resource settings. Combining the generated virtual sensor data with a small amount of real data achieves performance comparable to training on full real-world datasets.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/agentsense_results.jpg" alt="AgentSense results figure"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Table 1: Model performance (Accuracy, Weighted F1, Macro F1) comparing training on real data only versus pretraining on virtual data followed by finetuning on real data, using two TDOST embedding variants.</figcaption>
+    </figure>
+
+    <figure class="proj-figure">
+      <img src="../assets/agentsense_results_2.jpg" alt="AgentSense additional results"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Additional results from the AAAI 2026 paper.</figcaption>
+    </figure>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@inproceedings{leng2026agentsense,
+  title    = {AgentSense: Virtual Sensor Data Generation Using LLM Agents in Simulated Home Environments},
+  author   = {Leng, Zikang and Thukral, Megha and Liu, Yiqi and Rajasekhar, Hrudhai and Hiremath, Shruthi K. and He, Jingyuan and Pl{\"o}tz, Thomas},
+  booktitle= {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year     = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

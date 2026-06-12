@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Megha Thukral</title>
+  <meta name="description" content="Megha Thukral. ML PhD candidate at Georgia Tech. Foundation models for wearable sensing, ubiquitous computing, and digital health." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩‍💻</text></svg>" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">megha thukral</a>
+    <div class="links">
+      <a href="#news">news</a>
+      <!-- <a href="#projects">projects</a> -->
+      <!-- <a href="#venues">venues</a> -->
+      <!-- <a href="#collabs">collaborators</a> -->
+      <a href="#publications">publications</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">ML PhD · Georgia Tech</div>
+      <h1>Megha Thukral</h1>
+      <p class="lede">
+        I am a PhD student at the <a href="https://www.cc.gatech.edu/school-interactive-computing">School of Interactive Computing</a>, Georgia Tech. My research focuses on generalizable representation learning for health sensing, building machine learning models for sensor data and clinical structured text that generalize across users, devices, home layouts, and clinical settings. My research tackles distribution shift in health sensing under varying levels of data and label availability: adapting wearable HAR models <a href="projects/cross-domain-har.html">with limited supervision</a>, transferring across heterogeneous <a href="projects/tdost.html">smart-home environments </a>, and learning generalizable representations  with self-supervised pretraining <a href="projects/wavelet-ppg.html">for physiological signals </a> and <a href="https://meghathukral.github.io/HICD_EHR_FMs/"> for structured clinical records</a>.<!-- I am now extending these ideas to <em>multimodal</em> health foundation models that combine waveforms with structured EHR (<a href="projects/wafer.html">WavEHR</a>), where shifts affect not only individual modalities but also their interactions. -->
+
+        I previously interned at the <a href="https://sra.samsung.com/research-area/digital-health/">Samsung Research America Digital Health Lab</a> (Biomarkers team), and at <a href="https://www.bloomberg.com/company/values/tech-at-bloomberg/">Bloomberg AI Group</a>.
+
+        I am thankful to be advised by <a href="https://www.cc.gatech.edu/people/thomas-ploetz">Prof. Thomas Ploetz</a>, and grateful to be funded by <a href="https://www.optum.ai/">Optum AI</a> and <a href="https://ai-caring.org/">NSF AI-CARING</a>.
+      </p>
+    </div>
+    <div class="photo">
+      <img src="assets/profile_1.jpg" alt="Megha Thukral" />
+    </div>
+  </div>
+</header>
+
+<section id="news">
+  <div class="wrap">
+    <div class="eyebrow">latest</div>
+    <h2>News</h2>
+    <div class="news">
+      <div class="item"><div class="date">Dec 2025</div><p>Our Health Foundation Models project at Samsung Research America received the <strong>SRA President Award 2025</strong>.</p></div>
+      <div class="item"><div class="date">Nov 2025</div><p><a href="projects/agentsense.html"><strong>AgentSense</strong></a> accepted to <strong>AAAI 2026</strong>: virtual sensor data via LLM agents in simulated homes.</p></div>
+      <div class="item"><div class="date">Nov 2025</div><p><a href="projects/wavelet-ppg.html"><strong>Wavelet-Based Masked Multiscale Reconstruction for PPG</strong></a> accepted at the <strong>NeurIPS 2025</strong> Time Series for Health workshop.</p></div>
+      <div class="item"><div class="date">May 2025</div><p>Joined <strong>Samsung Research America</strong>'s Digital Health Lab (Biomarkers team) as a research intern.</p></div>
+      <div class="item"><div class="date">Jan 2025</div><p><a href="projects/tdost.html"><strong>TDOST</strong></a> accepted to <strong>ACM IMWUT</strong>: layout-agnostic smart-home activity recognition via textual sensor descriptions.</p></div>
+      <div class="item"><div class="date">Oct 2024</div><p><a href="projects/cross-domain-har.html"><strong>Cross-Domain HAR</strong></a> accepted to <strong>ACM TIST</strong>: few-shot transfer learning for human activity recognition.</p></div>
+      <div class="item"><div class="date">Aug 2024</div><p>Deployed our layout-agnostic HAR system in the <a href="https://sites.gatech.edu/awarehome/">Georgia Tech Aware Home</a> for the NSF AI CARING demo.</p></div>
+      <div class="item"><div class="date">Oct 2023</div><p>Co-authored <a href="https://dl.acm.org/doi/10.1145/3594738.3611366">paper</a> at <strong>ISWC 2023</strong>: how much unlabeled data is really needed for effective self-supervised HAR?</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="display:none">
+  <div class="wrap">
+    <div class="eyebrow">selected work</div>
+    <h2>Projects</h2>
+    <p style="max-width:72ch">Every project and publication below has its own page. The list is organized into three groups: papers I have led as first or co-first author, machine learning papers I have co-authored at top venues, and a final group of other and currently in-submission work.</p>
+
+    <h3 class="proj-subhead">Lead work · first or co-first author</h3>
+    <div class="projects">
+
+      <a class="project-card" href="projects/tdost.html">
+        <div class="thumb gradient-3"><span class="v-tag">IMWUT '25</span></div>
+        <div class="body">
+          <h3>TDOST</h3>
+          <p>A layout-agnostic approach to smart-home human activity recognition. Each sensor trigger is re-described as a short natural-language phrase, and the activity classifier operates on those text-grounded representations, letting a model trained in one home generalize to other homes with different sensor layouts.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/cross-domain-har.html">
+        <div class="thumb gradient-4"><span class="v-tag">ACM TIST '25</span></div>
+        <div class="body">
+          <h3>Cross-Domain HAR</h3>
+          <p>A study of few-shot transfer learning for human activity recognition across users, devices, and datasets. The paper presents a careful protocol and a baseline recipe that holds up across the major public HAR benchmarks.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/wavelet-ppg.html">
+        <div class="thumb gradient-1"><span class="v-tag">NeurIPS-W '25 · ICML '26 (in review)</span></div>
+        <div class="body">
+          <h3>Wavelet-Based PPG Foundation Models</h3>
+          <p>A foundation model for photoplethysmography that performs masked reconstruction directly in the wavelet domain. By masking and reconstructing specific wavelet bands rather than time-domain patches, the model captures structure ranging from sub-second pulse morphology to multi-minute physiological modulations.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/agentsense.html">
+        <div class="thumb gradient-2"><span class="v-tag">AAAI '26 · co-first</span></div>
+        <div class="body">
+          <h3>AgentSense</h3>
+          <p>A pipeline in which LLM-driven agents inhabit simulated homes, follow daily routines, and trigger virtual sensors as they move around, producing diverse, fully labeled smart-home sensor data without instrumenting a single real house.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/wafer.html">
+        <div class="thumb gradient-1"><span class="v-tag">under review</span></div>
+        <div class="body">
+          <h3>WavEHR</h3>
+          <p>Evaluating medical LLMs on structured EHR paired with clinical waveforms (ECG, PPG).</p>
+        </div>
+      </a>
+
+    </div>
+
+    <h3 class="proj-subhead">Other and pending</h3>
+    <div class="projects">
+
+      <a class="project-card" href="https://ogmenrobotics.github.io/K9Bench/#">
+        <div class="thumb gradient-3"><span class="v-tag">under review</span></div>
+        <div class="body">
+          <h3>K9-Bench</h3>
+          <p>A canine-centric video QA benchmark stress-testing long-horizon multimodal reasoning.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://meghathukral.github.io/HICD_EHR_FMs/">
+        <div class="thumb gradient-4"><span class="v-tag">under review</span></div>
+        <div class="body">
+          <h3>HICD-BERT and HICD-Graph</h3>
+          <p>Injecting ICD hierarchy into EHR foundation models as a token- and graph-level inductive bias.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="venues" style="display:none">
+  <div class="wrap">
+    <div class="eyebrow">visualization · interactive</div>
+    <h2>Venues</h2>
+    <p style="max-width:72ch">My research sits at the intersection of pervasive computing, machine learning, and signal processing, so the venues I publish in span all three communities. The visualization below makes that mix concrete. Each large circle represents a venue I have published in or submitted to. Each smaller dot orbiting a circle represents one of my papers at that venue. You can hover any dot to see the title and year, and click it to jump straight to the corresponding entry in the publication list further down the page.</p>
+    <div class="v-legend">
+      <span><span class="leg-dot"></span>first-author</span>
+      <span><span class="leg-dot outline"></span>co-authored</span>
+      <span><span class="leg-dot dashed"></span>in submission, under review</span>
+    </div>
+    <div class="venue-viz" id="venueViz" aria-label="Venues with paper clusters"></div>
+    <p class="vviz-hint" id="venueHint">Hover over a dot to see the paper. Click to jump to the publication.</p>
+  </div>
+</section>
+
+<section id="collabs" style="display:none">
+  <div class="wrap">
+    <div class="eyebrow">visualization · interactive</div>
+    <h2>Collaborators</h2>
+
+    <div class="research-universe">
+      <svg class="rc-svg" id="researchSvg" aria-label="Research universe visualization"></svg>
+      <aside class="rc-panel" id="researchPanel"></aside>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="eyebrow">archive</div>
+    <h2>Publications</h2>
+    <p style="max-width:62ch">Also on <a href="https://scholar.google.com/citations?user=gUTZEvgAAAAJ">Google Scholar</a>.</p>
+
+    <div class="year-group">
+      <h3>In Submission · Under Review</h3>
+
+      <div class="pub" id="pub-wafer">
+        <div><span class="vbadge gray">under review</span></div>
+        <div>
+          <div class="pub-title">How Well Do Clinical Foundation Models Leverage Structured Health Data and Waveforms?</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, et al.</div>
+          <div class="pub-venue">Under review</div>
+          <p class="pub-abstract">A zero-shot evaluation of medical multimodal LLMs on six EHR + waveform prediction tasks, showing that waveform inputs do not yield uniform improvements over EHR alone.</p>
+          <div class="pub-links"><!-- <a href="projects/wafer.html">Project page</a> --></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-k9">
+        <div><span class="vbadge gray">under review</span></div>
+        <div>
+          <div class="pub-title">K9-Bench: Evaluating Multimodal LLMs on Canine-Centric Videos</div>
+          <div class="pub-authors">K. Attarde*, Y. Ali*, <span class="me">M. Thukral</span><sup>†</sup>, D. Bhutani, T. Plötz, Z. Kira <span style="opacity:0.7;font-size:0.85em;">(* co-first, † core contributor)</span></div>
+          <div class="pub-venue">Under review</div>
+          <p class="pub-abstract">A canine-centric video QA benchmark (~5,000 pairs across 913 dog videos, five task categories) stress-testing long-horizon multimodal reasoning beyond human-centric scenes.</p>
+          <div class="pub-links"><a href="https://ogmenrobotics.github.io/K9Bench/#">Project page</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-hicd">
+        <div><span class="vbadge gray">under review</span></div>
+        <div>
+          <div class="pub-title">Hierarchical Modeling of ICD Codes in EHR Foundation Models</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, D. G. Kang, R. P. Singh, S. K. Hiremath, K. Hänsel, T. Plötz</div>
+          <div class="pub-venue">Under review</div>
+          <p class="pub-abstract">Two complementary mechanisms, <strong>HICD-BERT</strong> (token-level) and <strong>HICD-Graph</strong> (graph-level), for injecting ICD hierarchy into EHR foundation models, improving in-domain prediction and cross-dataset transfer.</p>
+          <div class="pub-links"><a href="https://meghathukral.github.io/HICD_EHR_FMs/">Project page</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-group">
+      <h3>2026</h3>
+
+      <div class="pub" id="pub-agentsense">
+        <div><span class="vbadge">AAAI</span></div>
+        <div>
+          <div class="pub-title">AgentSense: Virtual Sensor Data Generation Using LLM Agents in Simulated Home Environments</div>
+          <div class="pub-authors">Z. Leng, <span class="me">M. Thukral</span>, Y. Liu, H. Rajasekhar, S. K. Hiremath, J. He, T. Plötz</div>
+          <div class="pub-venue">AAAI Conference on Artificial Intelligence, 2026</div>
+          <div class="pub-links"><a href="projects/agentsense.html">Project page</a><a href="https://arxiv.org/pdf/2506.11773">arXiv</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-voice">
+        <div><span class="vbadge">ICASSP</span></div>
+        <div>
+          <div class="pub-title">A Personalized Real-Time Proactive Voice Memory Assistant</div>
+          <div class="pub-authors">H. Zhou, M. M. Rahman, S.-A. Lee, B. Lu, J. Lee, C. Tanade, <span class="me">M. Thukral</span>, et al.</div>
+          <div class="pub-venue">IEEE Intl. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 2026</div>
+          <div class="pub-links"><a href="https://ieeexplore.ieee.org/abstract/document/11462724">IEEE</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-sleep">
+        <div><span class="vbadge">ICASSP</span></div>
+        <div>
+          <div class="pub-title">Multimodal Self-Supervised Learning for Wearable Sleep Staging Using PPG and Accelerometer Signals</div>
+          <div class="pub-authors">J. Lee, S.-A. Lee, C. Tanade, V. Nathan, <span class="me">M. Thukral</span>, H. Zhou, K. S. Chun, et al.</div>
+          <div class="pub-venue">IEEE Intl. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 2026</div>
+          <div class="pub-links"><a href="https://ieeexplore.ieee.org/document/11462192">IEEE</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-himae">
+        <div><span class="vbadge">ICLR</span></div>
+        <div>
+          <div class="pub-title">HiMAE: Hierarchical Masked Autoencoders Discover Resolution-Specific Structure in Wearable Time Series</div>
+          <div class="pub-authors">S.-A. Lee, C. Tanade, H. Zhou, J. Lee, <span class="me">M. Thukral</span>, M. Han, R. Choi, M. S. H. Khan, et al.</div>
+          <div class="pub-venue">International Conference on Learning Representations (ICLR), 2026</div>
+          <div class="pub-links"><a href="https://openreview.net/pdf?id=iPAy5VpGQa">PDF</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-wavelet-arxiv">
+        <div><span class="vbadge gray">arXiv</span></div>
+        <div>
+          <div class="pub-title">Wavelet-Driven Masked Multiscale Reconstruction for PPG Foundation Models</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, C. Tanade, S.-A. Lee, J. Lee, H. Zhou, K. S. Chun, M. Gwak, et al.</div>
+          <div class="pub-venue">arXiv:2601.12215, 2026. Currently under review. The shorter workshop version was accepted at the NeurIPS 2025 Workshop on Learning from Time Series for Health.</div>
+          <div class="pub-links"><a href="projects/wavelet-ppg.html">Project page</a><a href="https://arxiv.org/pdf/2601.12215">arXiv</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-group">
+      <h3>2025</h3>
+
+      <div class="pub" id="pub-tdost">
+        <div><span class="vbadge">IMWUT</span></div>
+        <div>
+          <div class="pub-title">Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions of Sensor Triggers (TDOST)</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, S. G. Dhekane, S. K. Hiremath, H. Haresamudram, T. Plötz</div>
+          <div class="pub-venue">Proc. ACM IMWUT (UbiComp), 2025</div>
+          <div class="pub-links"><a href="projects/tdost.html">Project page</a><a href="https://dl.acm.org/doi/pdf/10.1145/3712278">PDF</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-cdhar">
+        <div><span class="vbadge">ACM TIST</span></div>
+        <div>
+          <div class="pub-title">Cross-Domain HAR: Few-Shot Transfer Learning for Human Activity Recognition</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, H. Haresamudram, T. Ploetz</div>
+          <div class="pub-venue">ACM Transactions on Intelligent Systems and Technology, 16(1), 2025</div>
+          <div class="pub-links"><a href="projects/cross-domain-har.html">Project page</a><a href="https://dl.acm.org/doi/10.1145/3704921">DOI</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-wavelet-w">
+        <div><span class="vbadge">NeurIPS-W</span></div>
+        <div>
+          <div class="pub-title">Wavelet-Based Masked Multiscale Reconstruction for PPG Foundation Models</div>
+          <div class="pub-authors"><span class="me">M. Thukral</span>, C. Tanade, S.-A. Lee, J. Lee, S. A. Desai</div>
+          <div class="pub-venue">NeurIPS 2025 Workshop on Learning from Time Series for Health</div>
+          <div class="pub-links"><a href="projects/wavelet-ppg.html">Project page</a><a href="https://openreview.net/pdf?id=kJbY2CsTPb">PDF</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-ondevice">
+        <div><span class="vbadge">NeurIPS-W</span></div>
+        <div>
+          <div class="pub-title">Towards On-Device Foundation Models for Raw Wearable Signals</div>
+          <div class="pub-authors">S.-A. Lee, C. Tanade, H. Zhou, J. Lee, <span class="me">M. Thukral</span>, B. Lu, S. A. Desai</div>
+          <div class="pub-venue">NeurIPS 2025 Workshop on Learning from Time Series for Health</div>
+          <div class="pub-links"><a href="https://openreview.net/forum?id=i6DUa3k63o">OpenReview</a></div>
+        </div>
+      </div>
+
+      <div class="pub" id="pub-genai4hs">
+        <div><span class="vbadge">UbiComp</span></div>
+        <div>
+          <div class="pub-title">Generative AI and Foundation Models for Human Sensing (GenAI4HS)</div>
+          <div class="pub-authors">H. Haresamudram, C. I. Tang, <span class="me">M. Thukral</span>, V. F. Rey, S. Suh, B. Zhou, et al.</div>
+          <div class="pub-venue">Companion of the 2025 ACM Intl. Joint Conf. on Pervasive and Ubiquitous Computing</div>
+          <div class="pub-links"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-group">
+      <h3>2023</h3>
+
+      <div class="pub" id="pub-sslhar">
+        <div><span class="vbadge">ISWC</span></div>
+        <div>
+          <div class="pub-title">How Much Unlabeled Data is Really Needed for Effective Self-Supervised Human Activity Recognition?</div>
+          <div class="pub-authors">S. G. Dhekane, H. Haresamudram, <span class="me">M. Thukral</span>, T. Plötz</div>
+          <div class="pub-venue">Proc. 2023 Intl. Symposium on Wearable Computers</div>
+          <div class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3594738.3611366">DOI</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">say hi</div>
+    <h2>Contact</h2>
+    <p>I am always happy to chat about my research and looking for collaborators. Say hi on <a href="mailto:mthukral3@gatech.edu">email</a>.</p>
+    <div class="contact">
+      <a class="pill" href="mailto:mthukral3@gatech.edu">📧 mthukral3@gatech.edu</a>
+      <a class="pill" href="https://scholar.google.com/citations?user=gUTZEvgAAAAJ">Google Scholar</a>
+      <a class="pill" href="https://www.linkedin.com/in/megha-thukral/">LinkedIn</a>
+      <a class="pill" href="https://github.com/meghathukral">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral · CODA Building, Atlanta, GA</div>
+    <div>Made with HTML and care.</div>
+  </div>
+</footer>
+
+<script src="assets/viz.js" defer></script>
+</body>
+</html>

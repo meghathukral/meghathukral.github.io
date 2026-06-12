@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K9-Bench · Megha Thukral</title>
+  <meta name="description" content="K9-Bench. Evaluating multimodal large language models on canine-centric videos. In submission at NeurIPS 2026 Datasets and Benchmarks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">NeurIPS 2026 · Datasets and Benchmarks · in submission</div>
+    <h1>K9-Bench: Evaluating Multimodal LLMs on Canine-Centric Videos</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>, et al.</div>
+    <div class="venue-line">In submission at NeurIPS 2026 (Datasets and Benchmarks Track)</div>
+    <div class="actions">
+      <span class="btn ghost">Manuscript available on request</span>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Despite rapid progress in multimodal video understanding, almost every existing benchmark is human-centric. Animals, and dogs in particular, are integral to millions of households, but we have very little visibility into whether frontier MLLMs can actually reason about the motion patterns, posture, and interaction cues that characterize everyday human and animal interaction.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/k9bench_fig.jpg" alt="K9-Bench task categories and dataset overview"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>K9-Bench task categories and representative examples. Drop a figure at <code>assets/k9bench_fig.jpg</code> to populate this slot.</figcaption>
+    </figure>
+
+    <h2>Idea</h2>
+    <p>
+      We introduce K9-Bench, a new benchmark of approximately 5,000 video and question-answer pairs drawn from 913 real-world videos of domestic dogs. The benchmark is organized into five distinct task categories, including posture analysis, action sequence, context analysis, cause and effect reasoning, and interaction analysis. Together these categories are designed to test long-horizon, fine-grained multimodal reasoning that goes beyond the human-centric scenes that dominate existing video benchmarks.
+    </p>
+
+    <h2>How we built it</h2>
+    <p>
+      To scale this setting beyond what is feasible with manual annotation, we propose a VLM and LLM-powered pipeline that automatically mines canine-centric videos from open web sources and constructs semantically rich question and answer pairs. The pipeline explicitly addresses semantic relevance, textual shortcuts, and model bias, and the same pipeline is general enough to be adapted to other low-data domains beyond dogs.
+    </p>
+
+    <h2>What we find</h2>
+    <p>
+      Frontier MLLMs exhibit limited zero-shot performance on canine-centric tasks. State-of-the-art closed-source models outperform open-source counterparts, but they still struggle with compositional reasoning over subtle posture and interaction cues spread over long temporal horizons. Generic chain-of-thought prompting provides only modest improvements, suggesting that long-horizon canine reasoning is a real and underexplored capability gap.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/k9bench_results.jpg" alt="K9-Bench results figure"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Category-wise accuracy of frontier MLLMs on K9-Bench. Closed-source models lead, but compositional reasoning over long-horizon posture and interaction cues remains an open capability gap.</figcaption>
+    </figure>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@inproceedings{thukral2026k9bench,
+  title    = {K9-Bench: Evaluating Multimodal LLMs on Canine-Centric Videos},
+  author   = {Thukral, Megha and others},
+  booktitle= {Submitted to NeurIPS 2026 Datasets and Benchmarks Track},
+  year     = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

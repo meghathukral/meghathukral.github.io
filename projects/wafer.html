@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WavEHR · Megha Thukral</title>
+  <meta name="description" content="WavEHR. How well do clinical foundation models leverage structured health data and waveforms? In submission at NeurIPS 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">in submission</div>
+    <h1>How Well Do Clinical Foundation Models Leverage Structured Health Data and Waveforms?</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>, et al.</div>
+    <div class="venue-line">In submission · WavEHR</div>
+    <div class="actions">
+      <span class="btn ghost">Manuscript available on request</span>
+      <span class="btn ghost">Code (coming soon)</span>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Medical large language models (MedLLMs) have gained increased adoption and evaluation in various healthcare settings. These evaluations predominantly involve structured electronic health records (EHRs) in conjunction with medical imaging and text data. Relatively little is still known, however, about the effectiveness of such models when pairing EHR data with physiological waveforms, a meaningful clinical signal with broad real-world usage and availability for diagnosis, monitoring, and risk assessment.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavehr_main.png" alt="WavEHR framework figure"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Figure 1: WavEHR, a framework for evaluating the capability of frontier, open-source medical LLMs to leverage physiological waveforms along with structured EHR data for clinical outcome predictions.</figcaption>
+    </figure>
+
+    <h2>Method</h2>
+    <p>
+      We introduce <strong>WavEHR</strong>, a systematic, zero-shot evaluation of open-source MedLLMs in this underexplored yet clinically relevant setting. We benchmark on two large-scale, publicly available, de-identified patient datasets containing complementary waveform modalities: <strong>MIMIC-IV</strong> with structured EHR and diagnostic 12-lead ECG (four tasks: 48-hour in-hospital mortality, length-of-stay, 30-day hospital readmission, next-visit emergency admission), and <strong>MC-MED</strong> with emergency-department EHR paired with bedside-monitor single-lead ECG and PPG (two tasks: hospital length-of-stay, ED revisit).
+    </p>
+    <p>
+      We evaluate three leading MedLLMs, <strong>QoQ-Med-7B</strong> (native time-series ingestion via ECG-JEPA encoder), <strong>MedGemma-4B</strong> and <strong>MedGemma-27B</strong> (rendered ECG/PPG as 4×2 grid-style waveform images). For each task we pass only textualized EHR to the model, then both EHR and waveform signals; the difference is our <em>conditional modality lift</em>:
+    </p>
+    <p style="text-align:center; font-family: var(--mono);">Δ<sub>lift</sub><sup>s</sup> = v(EHR + s) − v(EHR)</p>
+    <p>
+      We quantify uncertainty using 1,000-resample bootstrap 95% confidence intervals and report results across demographic, clinical, and temporal subgroups. We complement the aggregate metric with a <strong>content-normalized attention share</strong> Attn<sub>s</sub> = A<sub>s</sub> / (A<sub>s</sub> + A<sub>EHR</sub>), measured at the final prefill query position and averaged over heads and attention layers, to probe whether the model is actually attending to the added waveform.
+    </p>
+
+    <h2>Key findings</h2>
+    <p>
+      From our zero-shot evals, MedLLMs are <em>sometimes</em> able to leverage the physiological signal modality to boost performance over the EHR-only evaluation. However, we find that such Δ<sub>lift</sub> is highly inconsistent, varying widely across models, tasks, and sub-groups, with heterogeneous performance being obtained across experiments. Despite physiological waveforms carrying complementary information that can be vital to clinical decision making, <strong>frontier MedLLMs are unable to consistently leverage these signals on medical tasks</strong>, offering opportunities for future multimodal research in this important field.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavehr_subgroup.png" alt="WavEHR subgroup heatmap"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Figure 2: The direction of Δ<sub>lift</sub> in aggregate task-level performance typically extends across subgroups. Positive lift (green) and negative lift (red) heatmap across age, comorbidity (CCI), sex, race, admission type, insurance, arrival mode, and triage acuity for both MIMIC-IV and MC-MED.</figcaption>
+    </figure>
+
+    <h2>Subgroup analysis</h2>
+    <p>
+      Although the subgroup performance gains vary, the subgroup directional trend generally follows the overall task-level waveform Δ<sub>lift</sub>, with only a few exceptions. Clinical-context variables such as Charlson CCI, age, and admission type show more variation than sex or gender. This suggests that modality usefulness may be closely tied to illness burden, care setting, and the clinical decision being predicted, rather than to demographic grouping. For example, on MIMIC-IV LOS, QoQ-Med's ECG lift increases nearly monotonically with age (+3.54 pp for &lt;40 → +5.26 pp for 75+); on MC-MED ED-Revisit, MedGemma-4B's ECG lift rises monotonically with comorbidity burden (−0.31 pp in lowest-CCI cohort → +1.15 pp in highest).
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/wavehr_attn.png" alt="ECG attention share vs subgroup lift"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Figure 3: ECG attention share vs. subgroup-specific Δ<sub>lift</sub>. There is no consistent correlation between high Attn<sub>ECG</sub> and corresponding task lift, for some model–task pairs subgroups with greater ECG attention obtain larger positive lift, but the opposite is observed in others.</figcaption>
+    </figure>
+
+    <h2>Attention ≠ usefulness</h2>
+    <p>
+      ECG attention share is non-trivial (not close to zero) across models and tasks, but always remains below 50%, models always assign larger attention scores to the EHR text modality, consistent with modality-dominance patterns in the LVLM literature. Crucially, there is <strong>no correlation between high ECG attention share and performance improvements</strong>. Cases where ECG flips an EHR-only prediction from wrong to right show only marginal attention differences from cases where ECG flips a correct prediction to wrong (Δ<sub>He−Hu</sub> averaging −1.0 pp). The model may attend to the waveform while integrating it in a way that is not aligned with the task label or signal representation, identifying settings where engagement does not translate into reliable prediction gains.
+    </p>
+
+    <h2>Takeaways</h2>
+    <p>
+      WavEHR highlights a key gap and frontier for MedLLMs: better leveraging clinically relevant and widely available waveform data offers opportunities for stronger multimodal clinical learning. One avenue is to design better RL post-training objectives that incentivise effective usage of EHR-waveform modalities via novel rewards aligning physiological signal use with task-relevant attention over long EHR contexts. Broader integration of generic time-series encoders, together with better modality-aligned training, is still needed.
+    </p>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@inproceedings{thukral2026wavehr,
+  title    = {How Well Do Clinical Foundation Models Leverage Structured Health Data and Waveforms?},
+  author   = {Thukral, Megha and others},
+  booktitle= {Submitted to NeurIPS 2026 Datasets and Benchmarks Track},
+  year     = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

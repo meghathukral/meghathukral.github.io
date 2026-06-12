@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HiMAE · Megha Thukral</title>
+  <meta name="description" content="HiMAE. Hierarchical masked autoencoders discover resolution-specific structure in wearable time series. ICLR 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">ICLR 2026</div>
+    <h1>HiMAE: Hierarchical Masked Autoencoders Discover Resolution-Specific Structure in Wearable Time Series</h1>
+    <div class="authors">Sang-Ah Lee, Cyrus Tanade, Hao Zhou, Juhyeon Lee, <span class="me">Megha Thukral</span>, Minji Han, Rebecca Choi, Md Sazzad Hossain Khan, et al.</div>
+    <div class="venue-line">International Conference on Learning Representations (ICLR), 2026</div>
+    <div class="actions">
+      <a class="btn" href="https://openreview.net/pdf?id=iPAy5VpGQa">Paper (OpenReview)</a>
+      <a class="btn ghost" href="https://arxiv.org/abs/2510.25785">arXiv:2510.25785</a>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Self-supervised foundation models for wearable time series have grown larger and larger, but raw wearable signals such as photoplethysmography and accelerometry contain meaningful structure at very different temporal scales. A single-scale or monolithic encoder either smears fast detail or misses slow structure, and the resulting representations are difficult to interpret in terms of which time scale they actually rely on.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/himae_fig.jpg" alt="HiMAE architecture and resolution-specific behavior"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>HiMAE architecture. Drop a figure at <code>assets/himae_fig.jpg</code> to populate this slot.</figcaption>
+    </figure>
+
+    <h2>Idea</h2>
+    <p>
+      HiMAE is a lightweight self-supervised objective built around hierarchical masked autoencoders. The model is trained to reconstruct masked patches of wearable time series at multiple temporal resolutions, and the resulting hierarchy of representations preserves resolution-specific structure that downstream tasks can selectively read off.
+    </p>
+
+    <h2>What it gives you</h2>
+    <p>
+      The trained model competes with much larger transformer foundation models on a wide range of wearable downstream tasks despite its much smaller compute and parameter footprint. Just as importantly, the hierarchical structure doubles as an interpretability tool: by inspecting which level of the hierarchy a given downstream task most relies on, the model reveals the temporal resolution at which the task lives.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      Wearable signals on real devices need representations that are small enough to deploy and transparent enough to debug. HiMAE shows that careful hierarchical design can deliver both, and that resolution-specific interpretability falls out naturally from the architecture.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/himae_results.jpg" alt="HiMAE results figure"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>HiMAE downstream task performance, comparing against larger transformer foundation models and revealing which temporal resolution each downstream task relies on.</figcaption>
+    </figure>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@inproceedings{lee2026himae,
+  title    = {HiMAE: Hierarchical Masked Autoencoders Discover Resolution-Specific Structure in Wearable Time Series},
+  author   = {Lee, Sang-Ah and Tanade, Cyrus and Zhou, Hao and Lee, Juhyeon and Thukral, Megha and Han, Minji and Choi, Rebecca and Khan, Md Sazzad Hossain and others},
+  booktitle= {International Conference on Learning Representations (ICLR)},
+  year     = {2026}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

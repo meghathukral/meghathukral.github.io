@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cross-Domain HAR · Megha Thukral</title>
+  <meta name="description" content="Cross-Domain HAR: Few-Shot Transfer Learning for Human Activity Recognition. ACM TIST 2025." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">megha thukral</a>
+    <div class="links">
+      <a href="../index.html#projects">all projects</a>
+      <a href="../index.html#publications">publications</a>
+      <a href="../index.html#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="proj-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← back to projects</a>
+    <div class="v-tag">ACM TIST 2025</div>
+    <h1>Cross-Domain HAR: Few-Shot Transfer Learning for Human Activity Recognition</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>, Harish Haresamudram, Thomas Plötz</div>
+    <div class="venue-line">ACM Transactions on Intelligent Systems and Technology, 16(1), 2025</div>
+    <div class="actions">
+      <a class="btn" href="https://dl.acm.org/doi/10.1145/3704921">Paper (DOI)</a>
+      <a class="btn ghost" href="https://arxiv.org/pdf/2310.14390">arXiv preprint</a>
+      <span class="btn ghost">Code (coming soon)</span>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0; padding-top:8px;">
+  <div class="wrap proj-body">
+    <div class="callout">
+      <strong>The problem.</strong> Inertial measurement units (IMUs) in smartphones and smartwatches make it easy to capture human movement, but for specific HAR applications the cost and difficulty of ground-truth annotation severely limits dataset scale and diversity. Transfer learning from publicly available labeled datasets can help, yet these approaches fail when the gap between source and target conditions is large or when only a few samples from the target domain are available, both typical in real-world HAR.
+    </div>
+
+    <figure class="proj-figure">
+      <img src="../assets/cdhar_fig.jpg" alt="Cross-Domain HAR teacher-student self-training framework"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Cross-Domain HAR: a teacher-student self-training framework that bridges large source-to-target gaps in users, sensor placements, and activity vocabularies, using only a few seconds of labeled target data per activity class.</figcaption>
+    </figure>
+
+    <h2>Method</h2>
+    <p>
+      We introduce <strong>Cross-Domain HAR</strong>, a transfer-learning framework that follows the <strong>teacher-student self-training paradigm</strong> to recognize activities with very limited target labels. It explicitly bridges conceptual gaps between source and target domains, including <em>different sensor locations on the body</em> and <em>different activity vocabularies</em>. The workflow is:
+    </p>
+    <ol>
+      <li><strong>Train teacher</strong> on the labeled source domain.</li>
+      <li><strong>Generate pseudo-labels</strong> on the unlabeled target data using the teacher.</li>
+      <li><strong>Filter top-K confident</strong> predictions per class to suppress noisy pseudo-labels.</li>
+      <li><strong>Pre-train student</strong> in a multi-task setting on the augmented, filtered data, with self-supervised loss on unlabeled target streams and consistency regularization (matching teacher predictions on weakly-augmented inputs to student predictions on strongly-augmented versions of the same signal).</li>
+      <li><strong>Fine-tune</strong> the student with the few labeled target examples.</li>
+    </ol>
+    <p>
+      We use eight different signal augmentations to artificially expand much smaller activity-recognition datasets and to drive the consistency regularization. The combination of teacher-student self-training, confidence filtering, multi-task self-supervision on target data, and strong/weak augmentation consistency is what allows transfer to succeed even when source and target cover disjoint activities and different sensor placements.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      Most real-world HAR deployments involve target domains where only a few seconds of labeled sensor data per activity are realistic to collect, with sensor placements and activity sets that differ from existing public datasets (e.g. healthcare-specific movements on novel body locations). Cross-Domain HAR enables substantial performance improvements over the state-of-the-art in such few-shot, large-gap settings without requiring expensive new annotation campaigns, helping bootstrap HAR models quickly for new applications.
+    </p>
+
+    <figure class="proj-figure">
+      <img src="../assets/cdhar_results.jpg" alt="Cross-Domain HAR few-shot transfer results"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Few-shot cross-dataset transfer results across benchmark HAR datasets, showing substantial performance gains over prior transfer-learning baselines when only a few labeled target examples per activity class are available.</figcaption>
+    </figure>
+
+    <h2>Results</h2>
+    <p>
+      Through extensive evaluation across a range of benchmark HAR datasets, Cross-Domain HAR delivers significant accuracy improvements over state-of-the-art transfer-learning baselines in practically relevant few-shot scenarios. We also conduct detailed component analyses to identify which parts of the framework drive successful transfer, and provide practical suggestions for applying the framework to real-world HAR applications.
+    </p>
+
+    <h2>Cite</h2>
+    <pre class="bibblock">@article{thukral2025cross,
+  title  = {Cross-Domain HAR: Few-Shot Transfer Learning for Human Activity Recognition},
+  author = {Thukral, Megha and Haresamudram, Harish and Pl{\"o}tz, Thomas},
+  journal= {ACM Transactions on Intelligent Systems and Technology},
+  volume = {16}, number = {1}, pages = {1--35},
+  year   = {2025},
+  doi    = {10.1145/3704921}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Megha Thukral</div>
+    <div><a href="../index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
