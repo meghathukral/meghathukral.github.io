@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TDOST · Megha Thukral</title>
-  <meta name="description" content="Layout-Agnostic HAR in Smart Homes through Textual Descriptions of Sensor Triggers (TDOST). IMWUT 2025." />
+  <meta name="description" content="Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions Of Sensor Triggers (TDOST). IMWUT 2025." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
@@ -27,9 +27,10 @@
   <div class="wrap">
     <a class="back" href="../index.html#projects">← back to projects</a>
     <div class="v-tag">IMWUT 2025 · UbiComp</div>
-    <h1>TDOST: Layout-Agnostic Smart-Home Activity Recognition</h1>
-    <div class="authors"><span class="me">Megha Thukral</span>, Sourish Gunesh Dhekane, Shruthi K. Hiremath, Harish Haresamudram, Thomas Plötz</div>
-    <div class="venue-line">Proc. ACM IMWUT (Interactive, Mobile, Wearable & Ubiquitous Technologies), 2025</div>
+    <h1>Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions Of Sensor Triggers (TDOST)</h1>
+    <div class="authors"><span class="me">Megha Thukral</span>*, Sourish Gunesh Dhekane*, Shruthi K. Hiremath, Harish Haresamudram, Thomas Plötz</div>
+    <div class="venue-line" style="font-size:0.9em;opacity:0.75;">* equal contribution</div>
+    <div class="venue-line">Proc. ACM IMWUT (Interactive, Mobile, Wearable &amp; Ubiquitous Technologies), 2025</div>
     <div class="actions">
       <a class="btn" href="https://dl.acm.org/doi/pdf/10.1145/3712278">Paper (PDF)</a>
       <a class="btn ghost" href="https://arxiv.org/pdf/2405.12368">arXiv</a>
@@ -42,35 +43,49 @@
 <section style="border-top:0; padding-top:8px;">
   <div class="wrap proj-body">
     <div class="callout">
-      <strong>The problem.</strong> Smart-home HAR models break the moment a sensor is moved or a new home has a different layout. The signal is the <em>arrangement</em> of sensors, and that arrangement never repeats.
+      <strong>The problem.</strong> Human Activity Recognition (HAR) using ambient sensors in smart homes has numerous applications for human healthcare and wellness. However, building general-purpose HAR models that can be deployed to new smart home environments requires a significant amount of annotated sensor data and training overhead. Most smart homes vary significantly in their layouts, i.e., floor plans and the specifics of sensors embedded, resulting in low generalizability of HAR models trained for specific homes.
     </div>
 
     <figure class="proj-figure">
-      <img src="../assets/tdost_method.jpg" alt="TDOST method overview" />
-      <figcaption>TDOST converts each raw sensor event into a textual description of the trigger and then encodes that description with a language model, so that downstream models learn over the <em>meanings</em> of the triggers rather than over opaque sensor IDs.</figcaption>
+      <img src="../assets/tdost_method.jpg" alt="TDOST method overview"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>TDOST pipeline. Raw sensor triggers in a target home are converted into Textual Descriptions Of Sensor Triggers using readily available contextual information (sensor position, modality, time), then encoded with a pre-trained language model. A deep activity classifier trained only on a source home is applied directly on these text embeddings, without retraining or adaptation in the target home.</figcaption>
     </figure>
 
-    <h2>Idea</h2>
+    <h2>Method</h2>
     <p>
-      Instead of learning over opaque sensor IDs, we re-describe each sensor trigger as a short natural-language phrase, for example "the kitchen motion sensor turned on" or "the bedroom door opened". We then embed those phrases with a pretrained language model. The activity classifier subsequently operates over text-grounded representations that are invariant to the specific layout of any one home, since the same activity in a different home produces semantically similar descriptions even when the underlying sensor identifiers are completely different.
+      We introduce <strong>TDOST</strong>, a layout-agnostic modeling approach for HAR systems in smart homes that utilizes the transferrable representational capacity of natural language descriptions of raw sensor data. We generate <em>Textual Descriptions Of Sensor Triggers</em> that encapsulate the surrounding trigger conditions and provide cues for underlying activities to the activity recognition models. Leveraging textual embeddings, rather than raw sensor data, we create activity recognition systems that predict standard activities across homes without either (re-)training or adaptation on target homes.
+    </p>
+    <p>
+      TDOSTs are enriched with context that accompanies the raw sensor triggers, including the position of the sensor in the environment, its modality, and the time of the sensor trigger. They abstract away from the intricacies of the layout of a house and its sensor identifiers using natural language sentences, and can be efficiently encoded using pre-trained language models. The textual embedding space of web-scale text encoders then becomes the medium for transferring HAR models across home layouts <em>without</em> retraining on target layouts.
+    </p>
+    <p>
+      The approach tackles four challenges that arise when state-of-the-art HAR models are deployed in new smart-home conditions: (i) changes in sensor locations; (ii) different residents; (iii) data efficiency for model training; and (iv) label efficiency for target homes where no labeled or unlabeled data are collected. Our method only requires the floor plan of the target house and meta-information such as the quantity and types of sensors present, collected once and ingested automatically by the pipeline that converts raw sensor triggers into TDOSTs and feeds them to a deep classifier trained solely on labeled data from a source home.
     </p>
 
-    <h2>Why it matters</h2>
+    <h2>Results</h2>
     <p>
-      Layout invariance is one of the missing rungs in deploying smart-home human activity recognition at scale, because every new home effectively introduces a new domain in which sensor placements, sensor types, and sensor identifiers all change. TDOST allows models trained in one house to transfer to others without retraining, and we demonstrated that the approach works on a real deployment in the Georgia Tech Aware Home as part of the NSF AI CARING demo.
+      Through extensive evaluation on benchmark CASAS smart-home datasets, the TDOST HAR model performs better or at par with state-of-the-art supervised baselines in the same source-home setting, establishing the recognition capabilities of the TDOST-trained activity classifier. More importantly, the layout-agnostic transfer setting, with no retraining and no adaptation on target homes, achieves superior recognition performance compared to state-of-the-art transfer procedures across the same source-target home pairs. A detailed component analysis examines how the individual pieces of the approach (sensor description content, language model choice, prompt construction) affect downstream activity recognition performance.
     </p>
 
     <figure class="proj-figure">
-      <img src="../assets/tdost_results.png" alt="TDOST results" />
-      <figcaption>Cross-home generalization gains over sensor-ID baselines.</figcaption>
+      <img src="../assets/tdost_results.png" alt="TDOST cross-home transfer results"
+           onerror="this.parentElement.style.display='none'" />
+      <figcaption>Cross-home generalization of TDOST relative to sensor-ID baselines on benchmark CASAS datasets, evaluated without retraining or adaptation on the target home.</figcaption>
     </figure>
+
+    <h2>Live demo</h2>
+    <p>
+      The TDOST pipeline was deployed live in the <a href="https://sites.gatech.edu/awarehome/">Georgia Tech Aware Home</a> as part of the NSF AI CARING demo, taking the system out of simulation and into a real instrumented residence.
+    </p>
 
     <h2>Cite</h2>
     <pre class="bibblock">@article{thukral2025tdost,
-  title  = {Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions of Sensor Triggers (TDOST)},
+  title  = {Layout-Agnostic Human Activity Recognition in Smart Homes through Textual Descriptions Of Sensor Triggers (TDOST)},
   author = {Thukral, Megha and Dhekane, Sourish Gunesh and Hiremath, Shruthi K. and Haresamudram, Harish and Pl{\"o}tz, Thomas},
   journal= {Proc. ACM IMWUT},
-  year   = {2025}
+  year   = {2025},
+  doi    = {10.1145/3712278}
 }</pre>
   </div>
 </section>
