@@ -52,17 +52,13 @@
 
     <h2>Method</h2>
     <p>
-      We introduce <strong>Cross-Domain HAR</strong>, a transfer-learning framework that follows the <strong>teacher-student self-training paradigm</strong> to recognize activities with very limited target labels. It explicitly bridges conceptual gaps between source and target domains, including <em>different sensor locations on the body</em> and <em>different activity vocabularies</em>. The workflow is:
+      <strong>Cross-Domain HAR</strong> bridges large source-to-target domain gaps by combining <strong>knowledge distillation</strong> with <strong>self-supervision</strong> on unlabeled target data, in a teacher-student self-training paradigm. A teacher model trained on the labeled source domain transfers what it knows about activity structure to a student model deployed in the target domain. Rather than relying on the teacher's hard labels alone, the student is supervised by the teacher only on the most confident pseudo-labels (top-K per class), which acts as a soft, noise-tolerant form of distillation across heterogeneous activity vocabularies and sensor placements.
     </p>
-    <ol>
-      <li><strong>Train teacher</strong> on the labeled source domain.</li>
-      <li><strong>Generate pseudo-labels</strong> on the unlabeled target data using the teacher.</li>
-      <li><strong>Filter top-K confident</strong> predictions per class to suppress noisy pseudo-labels.</li>
-      <li><strong>Pre-train student</strong> in a multi-task setting on the augmented, filtered data, with self-supervised loss on unlabeled target streams and consistency regularization (matching teacher predictions on weakly-augmented inputs to student predictions on strongly-augmented versions of the same signal).</li>
-      <li><strong>Fine-tune</strong> the student with the few labeled target examples.</li>
-    </ol>
     <p>
-      We use eight different signal augmentations to artificially expand much smaller activity-recognition datasets and to drive the consistency regularization. The combination of teacher-student self-training, confidence filtering, multi-task self-supervision on target data, and strong/weak augmentation consistency is what allows transfer to succeed even when source and target cover disjoint activities and different sensor placements.
+      In parallel, the student exploits the unlabeled target stream through self-supervised learning, picking up target-specific signal structure that the source-trained teacher cannot provide. The two signals are bound together by consistency regularization: weak augmentations of an input are passed through the teacher, strong augmentations of the same input are passed through the student, and the student is trained to match the teacher's prediction. This forces the student to internalize the same activity concept across very different views of the signal, which is what enables generalization across users, body locations, and sensor configurations.
+    </p>
+    <p>
+      After this distillation-plus-self-supervision pre-training, the student is fine-tuned on just a few seconds of labeled target data per activity class. The resulting framework treats few-shot cross-domain transfer not as fine-tuning a borrowed feature extractor, but as <em>jointly distilling knowledge from a labeled source domain and self-supervising on the unlabeled target stream</em>, with both processes sharing a single student model.
     </p>
 
     <h2>Why it matters</h2>
